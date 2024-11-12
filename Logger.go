@@ -40,6 +40,6 @@ func (l *Logger) Output(calldepth int, s string) error {
 	}
 	var year, month, day = time.Now().Date()
 	var _, file, line, _ = runtime.Caller(calldepth)
-	var _, err = l.out.Write([]byte(fmt.Sprintf("%s%04d/%02d/%02d %s:%d: %s\n", l.prefix, year, month, day, file, line, s)))
-	return err
+	l.out.Write([]byte(fmt.Sprintf("%s%04d/%02d/%02d %s:%d: %s\n", l.prefix, year, month, day, file, line, s)))
+	return nil
 }
